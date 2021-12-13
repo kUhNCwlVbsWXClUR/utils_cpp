@@ -28,6 +28,8 @@ extern "C"
 //const int BUF_SIZE =1024;
 #define BUF_SIZE 1024
 
+typedef unsigned char u_char;
+
 int getFileSizeC(const char* filename);
 
 int getFileSizeU(const char* filename);
@@ -37,6 +39,10 @@ int getFileSizeL(const char* filename);
 char *currTime(const char* format);
 
 int copy(const char* src, const char* dst);
+
+void print_hex_ascii_line(const u_char* , int , int );
+
+void print_payload(const u_char*, int );
 
 #ifdef __cplusplus
 }

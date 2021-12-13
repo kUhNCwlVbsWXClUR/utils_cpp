@@ -1,11 +1,12 @@
 #include<utils_cpp/utils.h>
+#include<fcntl.h>
 
 /*
  * 获取文件大小的三个版本
  *
  */
 
-int main(){
+int main4(){
 	const char *filename = "test.pcm";
 	// int filesize = getFileSizeC(filename);
 	int filesize = getFileSizeL(filename);
@@ -32,4 +33,21 @@ int main2(int argc, char *argv[]){
 		printf("copy failed\n");
 	}
 	return 0;
+}
+
+int main(){
+
+	char filename[] = "libutils.a.bak";
+    int fd = open(filename, O_RDONLY);
+    if(fd == -1){
+        printf("open %s failed..\n", filename);
+        return -1;
+    }
+	unsigned char buf[64] = {1, 2, 3};
+
+	int ret = read(fd, buf, 64);
+	printf("read %d bytes from file\n", ret);
+	
+	print_payload(buf, 64);
+
 }
